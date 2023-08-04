@@ -1,0 +1,174 @@
+---
+title: "Homework 6"
+output: html_notebook
+---
+
+| Homework 6                     |                Data Analysis with R |
+| :---                           |                                ---: |
+| Due by 11:59 PM on Wed Oct 11  | Business Analytics Graduate Program |
+| Submit via GitHub              |                 BAIS:6060 Fall 2023 |
+
+# Instructions
+
+This homework covers Module 6. Refer to the corresponding materials and
+ICE (with solutions) posted on ICON. Follow all of the instructions
+given on prior homeworks, referring to them as necessary.
+
+# Exercises
+
+
+# #1
+
+Use the default read-in options to read `fires.csv` into a data frame
+called `df`, and then execute the following command to save the sorted,
+unique fire descriptions in a character vector called `mytext`:
+
+    mytext <- sort(unique(as.character(df$descript)))
+
+Then complete parts (a)-(d) below.
+
+```{r}
+
+```
+
+## (a)
+
+In a vector called `mat`, save a logical (`TRUE`/`FALSE`) vector
+indicating the presence of the substring "fire" (case sensitive) in the
+strings of `mytext`. Then use `mat` to save the subvector of matches
+within `mytext` into a new vector called `mytext_mat`. [Hint: If done
+correctly, `mytext_mat` should contain text, not logical values.]
+
+```{r}
+
+```
+
+## (b)
+
+Calculate the mean number of characters of the strings in `mytext` (not `mytext_mat`).
+Save the result in `mean_chars`. [Hint: Base your calculation on *all*
+characters, including spaces and punctuation. Do not round,
+and do not use any kind of loop to complete this task.]
+
+```{r}
+
+```
+
+## (c)
+
+Split `mytext` by the space character and save the results in
+`mylist`.
+
+```{r}
+
+```
+
+## (d)
+
+Flatten `mylist`, convert to lower case, determine the unique strings,
+and sort in alphabetical order. Save the resulting sorted, lower-case
+strings into a vector called `mywords`. Do not overwrite `mylist` in the
+process.
+
+```{r}
+
+```
+
+# #2
+
+The included `customers.csv` contains latitude-longitude coordinates
+for 7 customers---one customer per row---and the included `stores.csv`
+contains latitude-longitude coordinates for 3 stores---one store per
+row. The goal of this exercise is to calculate the distance (in miles)
+between each customer-store pair, which is a total of 21 distances to be
+calculated.
+
+The code given below loads the data and sets up a 7-row-by-3-column
+matrix, called `distances`, for storing the 21 distances. In addition,
+the code calculates and properly stores the distance between the 5th
+customer and the 2nd store.
+
+Alter the code to use a nested, double for loop to calculate all 21
+distances and store them in `distances`.
+
+```{r}
+# Load customers and stores data
+
+customers <- readr::read_csv("customers.csv", show_col_types = FALSE)
+stores <- readr::read_csv("stores.csv", show_col_types = FALSE)
+
+# Create distances matrix, which will hold distances between customers
+# and stores. In particular, distance[i, j] is the distance between
+# customer i and store j and is stored in the i-th row and j-th column
+# of the distances matrix
+
+distances <- matrix(NA, nrow(customers), nrow(stores))
+
+# Using temporary variables, save coordinates of 5th customer
+
+lat_c <- customers$lat[5]
+lon_c <- customers$lon[5]
+
+# Using temporary variables, save coordinates of 2nd store
+
+lat_s <- stores$lat[2]
+lon_s <- stores$lon[2]
+
+# Calculate the distance between the two pairs of coordinates. [Hint:
+# Assume this mathematical formula is correct. You can just use it as
+# is.]
+
+lat_diff <- lat_c - lat_s
+lon_diff <- lon_c - lon_s
+dist <- 68.51 * sqrt(lat_diff^2 + cos(lon_s)^2 * lon_diff^2)
+
+# Save the distance into the correct position in the distances matrix
+
+distances[5, 2] <- dist
+
+
+distances
+```
+
+# #3
+
+The webpage https://en.wikipedia.org/wiki/Leibniz_formula_for_π
+contains an interesting formula for the quantity pi/4, i.e., the number
+3.141593... divided by 4. It is what you might call an "infinite"
+formula because the sum includes an infinite number of terms. However,
+if one stops adding after awhile, the partial/finite sum will still be
+fairly close to pi/4.
+
+If the above URL doesn't work for you (because it contains the actual
+symbol for pi), you can also google "leibniz formula for pi" to locate
+the Wikipedia page.
+
+In the formula, you can notice that a term is added to/subtracted
+from the sum when the denominator either leaves a remainder of 1 when
+divided by 4 or leaves a remainder of 3 when divided by 4. (See the
+ICE solution for code on how to calculate remainders; see also the
+code below.)
+
+The following code will compute a partial/finite sum according to
+this formula, but five bits of code are missing. These bits are each
+indicated by three dots (i.e., "..."). Fill in these bits of code
+without altering any other parts of the code to calculate the sum.
+Once completed, running the code should produce the number 0.7803987,
+which is indeed not so far from pi/4 = 0.7853982.... [Note: Because of
+the missing bits of code, if you try to execute the code as given, it
+will produce an error.]
+
+
+    pi_over_four <- ...
+    for(i in 1:100) {
+        if(i %% 4 == ...) {
+            pi_over_four <- pi_over_four ...
+        } else if(i %% 4 == ...) {
+            pi_over_four <- pi_over_four ...
+        }
+    }
+
+
+```{r}
+
+```
