@@ -12,7 +12,10 @@ output: html_notebook
 
 This homework covers Module 6. Refer to the corresponding materials and
 ICE (with solutions) posted on ICON. Follow all of the instructions
-given on prior homeworks, referring to them as necessary.
+given on prior homeworks, referring to them as necessary. When you are 
+done, create a solution.R script file and place all R code from the Rmd
+file into it. Be sure that it runs stand alone. Also, use white space
+and comments to separate and document your code.
 
 # Exercises
 
@@ -21,13 +24,17 @@ given on prior homeworks, referring to them as necessary.
 
 Use the default read-in options to read `fires.csv` into a data frame
 called `df`, and then execute the following command to save the sorted,
-unique fire descriptions in a character vector called `mytext`:
+unique fire descriptions in a character vector called `mytext` and the 
+second command to save in a text file called `mytext.txt`:
 
     mytext <- sort(unique(as.character(df$descript)))
+    capture.output(mytext, file = "mytext.txt")
 
 Then complete parts (a)-(d) below.
 
 ```{r}
+
+
 
 ```
 
@@ -37,9 +44,12 @@ In a vector called `mat`, save a logical (`TRUE`/`FALSE`) vector
 indicating the presence of the substring "fire" (case sensitive) in the
 strings of `mytext`. Then use `mat` to save the subvector of matches
 within `mytext` into a new vector called `mytext_mat`. [Hint: If done
-correctly, `mytext_mat` should contain text, not logical values.]
+correctly, `mytext_mat` should contain text, not logical values.] Save
+`mytext_mat` in a text file called `mytext_mat.txt` like above.
 
 ```{r}
+
+
 
 ```
 
@@ -47,19 +57,24 @@ correctly, `mytext_mat` should contain text, not logical values.]
 
 Calculate the mean number of characters of the strings in `mytext` (not `mytext_mat`).
 Save the result in `mean_chars`. [Hint: Base your calculation on *all*
-characters, including spaces and punctuation. Do not round,
-and do not use any kind of loop to complete this task.]
+characters, including spaces and punctuation. Do not round, and do not use 
+any kind of loop to complete this task.] Save `mean_chars` in a text file 
+called `mean_chars.txt`.
 
 ```{r}
+
+
 
 ```
 
 ## (c)
 
 Split `mytext` by the space character and save the results in
-`mylist`.
+`mylist`. Save `mylist` in a text file called `mylist.txt`.
 
 ```{r}
+
+
 
 ```
 
@@ -68,9 +83,11 @@ Split `mytext` by the space character and save the results in
 Flatten `mylist`, convert to lower case, determine the unique strings,
 and sort in alphabetical order. Save the resulting sorted, lower-case
 strings into a vector called `mywords`. Do not overwrite `mylist` in the
-process.
+process. Save `mywords` in a text file called `mywords.txt`.
 
 ```{r}
+
+
 
 ```
 
@@ -89,7 +106,8 @@ the code calculates and properly stores the distance between the 5th
 customer and the 2nd store.
 
 Alter the code to use a nested, double for loop to calculate all 21
-distances and store them in `distances`.
+distances and store them in `distances`. Save `distances` in a text file 
+called `distances.txt`.
 
 ```{r}
 # Load customers and stores data
@@ -128,6 +146,7 @@ distances[5, 2] <- dist
 
 
 distances
+
 ```
 
 # #3
@@ -156,8 +175,8 @@ without altering any other parts of the code to calculate the sum.
 Once completed, running the code should produce the number 0.7803987,
 which is indeed not so far from pi/4 = 0.7853982.... [Note: Because of
 the missing bits of code, if you try to execute the code as given, it
-will produce an error.]
-
+will produce an error.] Save `pi_over_four` in a text file called 
+`pi_over_four.txt`.
 
     pi_over_four <- ...
     for(i in 1:100) {
@@ -168,7 +187,8 @@ will produce an error.]
         }
     }
 
-
 ```{r}
+
+
 
 ```
